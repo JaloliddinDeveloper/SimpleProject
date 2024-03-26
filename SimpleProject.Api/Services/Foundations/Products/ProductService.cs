@@ -1,4 +1,9 @@
-﻿using SimpleProject.Api.Brokers.Loggings;
+﻿//==================================================
+// Copyright (c) Coalition Of Good-Hearted Engineers
+// Free To Use To Find Comfort And Peace
+//==================================================
+
+using SimpleProject.Api.Brokers.Loggings;
 using SimpleProject.Api.Brokers.Storages;
 using SimpleProject.Api.Models.Foundations.Products;
 
