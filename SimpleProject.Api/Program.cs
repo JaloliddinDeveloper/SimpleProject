@@ -9,7 +9,7 @@ using SimpleProject.Api.Brokers.Storages;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<IStorageBroker, StorageBroker>();
-builder.Services.AddTransient<ILoggingBroker, LoggingBroker>();
+//builder.Services.AddTransient<ILoggingBroker, LoggingBroker>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

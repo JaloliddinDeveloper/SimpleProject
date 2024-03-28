@@ -16,24 +16,5 @@ namespace SimpleProject.Api.Brokers.Storages
         {
             return await InsertAsync(product);
         }
-
-        public IQueryable<Product> SelectAllProducts()
-        {
-            return SelectAll<Product>();
-        }
-
-        public async ValueTask<Product> SelectProductByIdAsync(Guid productId)
-        {
-            return await SelectAsync<Product>(productId);
-        }
-
-        public async ValueTask<Product> UpdateProductAsync(Product product)
-        {
-           return await UpdateAsync(product);
-        }
-        public async ValueTask<Product> DeleteProductAsync(Product product)
-        {
-            return await DeleteAsync(product);
-        }
     }
 }
