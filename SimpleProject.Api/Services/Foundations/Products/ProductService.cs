@@ -22,7 +22,7 @@ namespace SimpleProject.Api.Services.Foundations.Products
 
         public async  ValueTask<Product> AddProductAsync(Product product)
         {
-           return await this.storageBroker.InsertProductAsync(product);
+           throw new NotImplementedException();
         }
     }
 }

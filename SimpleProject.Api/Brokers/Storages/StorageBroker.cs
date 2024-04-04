@@ -30,7 +30,9 @@ namespace SimpleProject.Api.Brokers.Storages
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-CNTLCPV;Initial Catalog=ProductDb;Integrated Security=True;TrustServerCertificate=True");
+            string connectionString = 
+                this.configuration.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseSqlServer(connectionString);
         }
         public override void Dispose() { }
 

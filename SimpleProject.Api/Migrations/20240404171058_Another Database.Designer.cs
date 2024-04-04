@@ -12,8 +12,8 @@ using SimpleProject.Api.Brokers.Storages;
 namespace SimpleProject.Api.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20240326190926_CreateAllColumnTables")]
-    partial class CreateAllColumnTables
+    [Migration("20240404171058_Another Database")]
+    partial class AnotherDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,9 +31,11 @@ namespace SimpleProject.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTimeOffset>("CreateOfDate")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
                         .IsRequired()

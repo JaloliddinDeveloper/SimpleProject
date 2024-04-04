@@ -8,7 +8,9 @@ using SimpleProject.Api.Brokers.Loggings;
 using SimpleProject.Api.Brokers.Storages;
 using SimpleProject.Api.Models.Foundations.Products;
 using SimpleProject.Api.Services.Foundations.Products;
+using System.Linq.Expressions;
 using Tynamix.ObjectFiller;
+using Xeptions;
 
 namespace SimpleProject.Api.Unit.Tests.Services.Foundations.Products
 {
@@ -31,6 +33,10 @@ namespace SimpleProject.Api.Unit.Tests.Services.Foundations.Products
             CreateProductFiller(date: GetRandomDateTimeOffset).Create();
         private static DateTimeOffset GetRandomDateTimeOffset =>
             new DateTimeRange(earliestDate: new DateTime()).GetValue();
+
+        private Expression<Func<Xeption,bool>> SameExceptionAs(Xeption expectedException)=>
+             actualException=>actualException.SameExceptionAs(expectedException);
+        
 
         private static Filler<Product> CreateProductFiller(DateTimeOffset date)
         {
