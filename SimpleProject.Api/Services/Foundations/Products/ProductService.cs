@@ -6,6 +6,7 @@
 using SimpleProject.Api.Brokers.Loggings;
 using SimpleProject.Api.Brokers.Storages;
 using SimpleProject.Api.Models.Foundations.Products;
+using SimpleProject.Api.Models.Foundations.Products.Exceptions;
 
 namespace SimpleProject.Api.Services.Foundations.Products
 {
@@ -20,9 +21,26 @@ namespace SimpleProject.Api.Services.Foundations.Products
             this.loggingBroker = loggingBroker;
         }
 
-        public async  ValueTask<Product> AddProductAsync(Product product)
+        public async ValueTask<Product> AddProductAsync(Product product)
         {
-           throw new NotImplementedException();
+            try
+            {
+
+
+                if (product is null)
+                {
+                    throw new NullProductException();
+                }
+                return await this.storageBroker.InsertProductAsync(product);
+            }
+            catch(NullProductException nullProductException)
+            {
+                var productValidationException =
+                    new ProductValidationException(nullProductException);
+                this.loggingBroker.LogError(productValidationException);
+
+                throw productValidationException;
+            }
         }
     }
 }
