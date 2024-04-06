@@ -9,7 +9,7 @@ using SimpleProject.Api.Models.Foundations.Products;
 
 namespace SimpleProject.Api.Services.Foundations.Products
 {
-    public class ProductService : IProductService
+    public partial class ProductService : IProductService
     {
         private readonly IStorageBroker storageBroker;
         private readonly ILoggingBroker loggingBroker;
@@ -20,9 +20,18 @@ namespace SimpleProject.Api.Services.Foundations.Products
             this.loggingBroker = loggingBroker;
         }
 
-        public async  ValueTask<Product> AddProductAsync(Product product)
-        {
-           return await this.storageBroker.InsertProductAsync(product);
-        }
+        public ValueTask<Product> AddProductAsync(Product product) =>
+            TryCatch(async () =>
+            {
+                ValidateProductNotNull(product);
+                return await this.storageBroker.InsertProductAsync(product);
+            });
     }
 }
+
+
+
+
+
+
+

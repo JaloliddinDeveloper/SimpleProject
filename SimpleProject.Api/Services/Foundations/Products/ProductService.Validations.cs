@@ -4,11 +4,18 @@
 //==================================================
 
 using SimpleProject.Api.Models.Foundations.Products;
+using SimpleProject.Api.Models.Foundations.Products.Exceptions;
 
 namespace SimpleProject.Api.Services.Foundations.Products
 {
-    public interface IProductService
+    public partial class ProductService
     {
-        ValueTask<Product> AddProductAsync(Product product);
+        private void ValidateProductNotNull(Product product)
+        {
+            if (product is null)
+            {
+                throw new NullProductException();
+            }
+        }
     }
 }

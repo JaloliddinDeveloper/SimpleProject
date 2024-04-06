@@ -1,14 +1,14 @@
-﻿//==================================================
-// Copyright (c) Coalition Of Good-Hearted Engineers
-// Free To Use To Find Comfort And Peace
-//==================================================
-
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
 
 namespace SimpleProject.Api.Migrations
 {
-    public partial class CreateAllColumnTables : Migration
+    /// <inheritdoc />
+    public partial class AnotherDatabase : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -17,7 +17,8 @@ namespace SimpleProject.Api.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CreateOfDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,6 +26,7 @@ namespace SimpleProject.Api.Migrations
                 });
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
